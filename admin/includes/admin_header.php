@@ -34,6 +34,7 @@ if(!is_admin($_SESSION['username'])){
         <script src="js/jquery.js"></script>
         <script src="js/scripts.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src="js/tinymce/tinymce.min.js"></script>
     </head>
 
     <body>

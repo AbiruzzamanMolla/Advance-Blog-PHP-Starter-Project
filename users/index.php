@@ -19,143 +19,62 @@
                     </div>
                     <!-- /.row -->
                     <div class="row">
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3"> <i class="fa fa-file-text fa-5x"></i> </div>
-                                        <div class="col-xs-9 text-right">
-                                            <?php
-                                    $query = "SELECT * FROM posts";
-                                    $all_post_count = mysqli_query($connection, $query);
-                                    $post_count = mysqli_num_rows($all_post_count);
-                                    echo "<div class='huge'>{$post_count}</div>";
-                                    ?>
-                                                <div>Posts</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="posts.php">
-                                    <div class="panel-footer"> <span class="pull-left">View Details</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-9 col-md-6">
-                            <div class="panel panel-primary">
-                                <!--
-            <div class="panel-heading">
-    <div class="row">
-        <div class="col-xs-3"> <i class="fa fa-file-text fa-5x"></i> </div>
-        <div class="col-xs-9 text-right"> 7
-            <div>Posts</div>
-        </div>
-    </div>
+<?php 
+
+   if(isset($_SESSION['username'])){
+       $un = $_SESSION['username'];
+   }
+    $query = "SELECT * FROM posts WHERE post_author = '{$un}' ";
+    $select_all_posts = mysqli_query($connection,$query);
+    $post_all_count = mysqli_num_rows($select_all_posts);
+    
+    $query = "SELECT * FROM posts WHERE post_author = '{$un}' AND post_status = 'publish' ";
+    $select_all_published_posts = mysqli_query($connection,$query);
+    $post_published_count = mysqli_num_rows($select_all_published_posts);
+                                                                  
+    $query = "SELECT * FROM posts WHERE post_status = 'draft' AND post_author = '{$un}' ";
+    $select_all_draft_posts = mysqli_query($connection,$query);
+    $post_draft_count = mysqli_num_rows($select_all_draft_posts);
+
+    $query = "SELECT * FROM comments WHERE comment_status = 'approve' AND comment_author = '{$un}' ";
+    $comments_query = mysqli_query($connection,$query);
+    $comment_count = mysqli_num_rows($comments_query);
+
+    $query = "SELECT * FROM comments WHERE comment_status = 'unapproved' AND comment_author = '{$un}' ";
+    $unapproved_comments_query = mysqli_query($connection,$query);
+    $unapproved_comment_count = mysqli_num_rows($unapproved_comments_query);
+   
+?>
+
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Data', 'Counts'],
+          ['All Posts', <?php echo $post_all_count; ?>],
+          ['Active Posts', <?php echo $post_published_count; ?>],
+          ['Draft Posts', <?php echo $post_draft_count; ?>],
+          ['Comments', <?php echo $comment_count; ?>],
+          ['Pending Comments', <?php echo $unapproved_comment_count; ?>]
+        ]);
+
+        var options = {
+          chart: {
+            title: '',
+            subtitle: '',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+
+    <div id="columnchart_material" style="width: 'auto'; height: 500px;"></div>
 </div>
-<a href="posts.php">
-    <div class="panel-footer"> <span class="pull-left">View Details</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-        <div class="clearfix"></div>
-    </div>
-</a>
---></div>
-                        </div>
-                    </div>
-                    <!--            Statics profile-->
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3"> <i class="fa fa-file-text fa-5x"></i> </div>
-                                        <div class="col-xs-9 text-right">
-                                            <?php
-                                    $query = "SELECT * FROM posts";
-                                    $all_post_count = mysqli_query($connection, $query);
-                                    $post_count = mysqli_num_rows($all_post_count);
-                                    echo "<div class='huge'>{$post_count}</div>";
-                                    ?>
-                                                <div>Posts</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="posts.php">
-                                    <div class="panel-footer"> <span class="pull-left">View Details</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-green">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3"> <i class="fa fa-comments fa-5x"></i> </div>
-                                        <div class="col-xs-9 text-right">
-                                            <?php
-                                    $query = "SELECT * FROM comments";
-                                    $all_comments_count = mysqli_query($connection, $query);
-                                    $comments_count = mysqli_num_rows($all_comments_count);
-                                    echo "<div class='huge'>{$comments_count}</div>";
-                                    ?>
-                                                <div>Comments</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="comments.php">
-                                    <div class="panel-footer"> <span class="pull-left">View Details</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-yellow">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3"> <i class="fa fa-user fa-5x"></i> </div>
-                                        <div class="col-xs-9 text-right">
-                                            <?php
-                                    $query = "SELECT * FROM users";
-                                    $all_users_count = mysqli_query($connection, $query);
-                                    $users_count = mysqli_num_rows($all_users_count);
-                                    echo "<div class='huge'>{$users_count}</div>"; ?>
-                                                <div> Users</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="users.php">
-                                    <div class="panel-footer"> <span class="pull-left">View Details</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-red">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3"> <i class="fa fa-list fa-5x"></i> </div>
-                                        <div class="col-xs-9 text-right">
-                                            <?php
-                                    $query = "SELECT * FROM categories";
-                                    $all_categories_count = mysqli_query($connection, $query);
-                                    $categories_count = mysqli_num_rows($all_categories_count);
-                                    echo "<div class='huge'>{$categories_count}</div>";
-                                    ?>
-                                                <div>Categories</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="categories.php">
-                                    <div class="panel-footer"> <span class="pull-left">View Details</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.row -->
                     <!-- /.row -->
                 </div>
                 <!-- /.container-fluid -->

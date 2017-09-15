@@ -38,6 +38,7 @@ if(isset($_POST['create_post'])){
         Add Post
         <small></small>
     </h1>
+    <script>tinymce.init({ selector:'textarea' });</script>
     <form action="" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="post_title">Title</label>

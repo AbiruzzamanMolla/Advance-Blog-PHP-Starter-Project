@@ -1,9 +1,5 @@
 # [Blog CMS](http://localhost)
 
-[![Slack](https://bootstrap-slack.herokuapp.com/badge.svg)](https://bootstrap-slack.herokuapp.com)
-![Bower version](https://img.shields.io/bower/v/bootstrap.svg)
-[![npm version](https://img.shields.io/npm/v/bootstrap.svg)](https://www.npmjs.com/package/bootstrap)
-
 
 Blog CMS is a content management system , created by [Abiruzzaman Molla](https://facebook.com/asliabir) with the massive support and involvement of the community.
 To get started, check out <http://localhost>!
@@ -43,7 +39,7 @@ You can learn all of those in [w3schools.com](#http://w3schools.com)
  - [x] Adding user feature.
  - [x] Adding user login feature.
  - [x] Adding user profile feature.
- - [ ] Adding deshboard feature in admin index.
+ - [x] Adding deshboard feature in admin index and user index.
  - [x] Improving our CMS
  - [x] Adding Message and Notification(Panding Posts, Pandding Commenst, Pandding Messages)
  - [x] Adding user registation feature.
@@ -60,7 +56,7 @@ You can learn all of those in [w3schools.com](#http://w3schools.com)
  - [x] Connecting two database table in view all post.
  - [x] Changing registation fileds.
  - [x] Adding recent posts and comments view in index page.
- - [ ] Adding social plugin to index sidebar.
+ - [x] Adding social plugin to index sidebar.
 
 ## Features to add next
 
