@@ -33,6 +33,7 @@ if(!is_admin($_SESSION['username'])){
         <!-- jQuery -->
         <script src="js/jquery.js"></script>
         <script src="js/scripts.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     </head>
 
     <body>
