@@ -140,23 +140,48 @@
             </div>
             <!-- /.row -->
             <div class="row">
+<?php 
+
+    $query = "SELECT * FROM posts WHERE post_status = 'publish' ";
+    $select_all_published_posts = mysqli_query($connection,$query);
+    $post_published_count = mysqli_num_rows($select_all_published_posts);
+                                                                  
+    $query = "SELECT * FROM posts WHERE post_status = 'draft' ";
+    $select_all_draft_posts = mysqli_query($connection,$query);
+    $post_draft_count = mysqli_num_rows($select_all_draft_posts);
+
+    $query = "SELECT * FROM comments WHERE comment_status = 'unapproved' ";
+    $unapproved_comments_query = mysqli_query($connection,$query);
+    $unapproved_comment_count = mysqli_num_rows($unapproved_comments_query);
+
+    $query = "SELECT * FROM users WHERE user_role = 'subscriber'";
+    $select_all_subscribers = mysqli_query($connection,$query);
+    $subscriber_count = mysqli_num_rows($select_all_subscribers);
+
+?>
+
+
     <script type="text/javascript">
       google.charts.load('current', {'packages':['bar']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses', 'Profit'],
-          ['2014', 1000, 400, 200],
-          ['2015', 1170, 460, 250],
-          ['2016', 660, 1120, 300],
-          ['2017', 1030, 540, 350]
+          ['Data', 'Counts'],
+          ['All Posts', <?php echo $post_count; ?>],
+          ['Active Posts', <?php echo $post_published_count; ?>],
+          ['Draft Posts', <?php echo $post_draft_count; ?>],
+          ['Comments', <?php echo $comments_count; ?>],
+          ['Pending Comments', <?php echo $unapproved_comment_count; ?>],
+          ['Users', <?php echo $users_count; ?>],
+          ['Subscriber', <?php echo $subscriber_count; ?>],
+          ['Categories', <?php echo $categories_count; ?>]
         ]);
 
         var options = {
           chart: {
-            title: 'Company Performance',
-            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+            title: '',
+            subtitle: '',
           }
         };
 
