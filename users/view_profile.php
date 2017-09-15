@@ -255,7 +255,7 @@
                     }
             }
         } else {
-             header("Locaton: ../cms/index.php");
+             header("Locaton: ../index.php");
         } {
                
             }

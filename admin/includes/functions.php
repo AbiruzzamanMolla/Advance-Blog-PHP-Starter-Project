@@ -93,7 +93,8 @@ function msg_show($msg, $msg2){
             }
 
 function dateSave(){
-    date('D, F d, Y - h:i:s A');
+    
+    return date('D, F d, Y - h:i:s A');
 }
 
 /* ***********************************************global functions ends here******************************************************* */

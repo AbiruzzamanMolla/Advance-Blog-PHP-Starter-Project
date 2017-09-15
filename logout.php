@@ -7,6 +7,6 @@ session_start();
         $_SESSION['user_role'] = null;
         // session_unset(); 
         // session_destroy();
-        header("Location: ../cms/index.php");
+        header("Location: ../index.php");
 
 ?>

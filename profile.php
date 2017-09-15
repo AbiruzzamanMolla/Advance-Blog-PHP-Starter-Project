@@ -231,10 +231,10 @@
 					<?php
                     }
             } else {
-                header("Locaton: ../cms/index.php");
+                header("Locaton: ../index.php");
             }
         } else {
-             header("Locaton: ../cms/index.php");
+             header("Locaton: ../index.php");
         }
  ?>
 						<!-- /.row -->

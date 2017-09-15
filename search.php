@@ -8,10 +8,6 @@
     <div class="row">
         <!-- Blog Entries Column -->
         <div class="col-md-8">
-            <h1 class="page-header">
-                abCMS
-                <small>A simple web blog</small>
-            </h1>
             <?php
             $per_page = 5;
             if(isset($_GET['page'])){
