@@ -152,7 +152,6 @@ msg_show($msg, $msg2);
             $post_id = $row['post_id'];
             $post_title = $row['post_title'];
             $post_author = $row['post_author'];
-            $post_content = $row['post_content'];
             $post_category_id = $row['post_category_id'];
             $post_status = $row['post_status'];
             $post_image = $row['post_image'];
@@ -162,16 +161,14 @@ msg_show($msg, $msg2);
             $post_comment_count = $row['post_comment_count'];
             $cat_title = $row['cat_title'];
             $cat_id = $row['cat_id'];
-
-
             echo "<tr>";
             ?>
-                                    <td>
-                                        <input type="checkbox" class="checkBoxes" name="checkBoxArray[]" value="<?php echo $post_id; ?>"> </td>
-                                    <?php
+            <td>
+            <input type="checkbox" class="checkBoxes" name="checkBoxArray[]" value="<?php echo $post_id; ?>"> </td>
+            <?php
             echo "<td>$post_id</td>";
             echo "<td><a href='../author_post.php?author=$post_author'>$post_author</a></td>";
-            echo "<td><a href='../post.php?p_id={$post_id}' title='$post_title' data-toggle='popover' data-trigger='hover' data-content='$post_content'>$post_title</a></td>";
+            echo "<td>$post_title</td>";
             echo "<td><a href='../category.php?category={$cat_id}'>$cat_title</a></td>";
             echo  "<td>$post_status</td>";
             echo  "<td><img width='100' src='../images/post_pic/$post_image' alt='image'/></td>";

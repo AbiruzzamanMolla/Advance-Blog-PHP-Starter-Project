@@ -57,16 +57,18 @@ You can learn all of those in [w3schools.com](#http://w3schools.com)
  - [x] Changing registation fileds.
  - [x] Adding recent posts and comments view in index page.
  - [x] Adding social plugin to index sidebar.
+ - [x] Improvement in user profile.
+ - [x] Allow user to add post.
+ - [x] Allow guest to comments in post.
+ - [x] Make a section for users.
+ - [x] Add profile picture in comments.
+ - [x] Logged user feature. Reg date in profile . Last login date in profile.
 
 ## Features to add next
 
-- [x] Improvement in user profile.
+- [ ] Add inbox reply system for admin replay in comments.
 - [ ] Add image only file system in user profile picture and blog post preview.
-- [x] Allow user to add post.
-- [ ] Allow guest to comments in post.
-- [x] Make a section for users.
 - [ ] Improvement in Registration, Email verifivation, password recovery.
-- [ ] Add profile picture in comments.
 - [ ] Improvement in admin section.
 - [ ] Add rank system in users.
 - [ ] Add file uploading option.
@@ -74,7 +76,6 @@ You can learn all of those in [w3schools.com](#http://w3schools.com)
 - [ ] Create your own portfullio in about section.
 - [ ] Add terms and condition page.
 - [ ] More improvement in notification.
-- [x] Logged user feature. Reg date in profile . Last login date in profile.
 - [ ] Add backup datebse secdual feauter.
 
 

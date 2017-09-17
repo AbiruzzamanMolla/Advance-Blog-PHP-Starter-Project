@@ -18,7 +18,7 @@ if(isset($_POST['create_post'])){
     move_uploaded_file($post_image_temp, "../images/post_pic/$post_image");
 
     $post_tags = $_POST['post_tags'];
-    $post_content = $_POST['post_content'];
+    $post_content = escape($_POST['post_content']);
     $post_date = date('D, F d, Y - h:i:s A');
     $post_comment_count = 0;
 
@@ -92,7 +92,7 @@ if(isset($_POST['create_post'])){
             <input type="text" class="form-control" name="post_tags" required> </div>
         <div class="form-group">
             <label for="post_content">Post Content</label>
-            <textarea type="text" class="form-control" name="post_content" id="" cols="30" rows="10" required></textarea>
+            <textarea type="text" class="form-control" name="post_content" id="" cols="30" rows="10"></textarea>
         </div>
         <div class="btn-group btn-group-lg">
             <input type="submit" name="create_post" class="btn btn-primary" value="Publish Post"> </div>

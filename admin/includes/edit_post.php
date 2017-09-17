@@ -32,7 +32,7 @@ while($row = mysqli_fetch_assoc($select_post_by_id)){
         move_uploaded_file($post_image_temp, "../images/post_pic/$post_image");
 
         $post_tags = $_POST['post_tags'];
-        $post_content = $_POST['post_content'];
+        $post_content = escape($_POST['post_content']);
 
         move_uploaded_file($post_image_temp, "../images/post_pic/$post_image");
         if(empty($post_image)){

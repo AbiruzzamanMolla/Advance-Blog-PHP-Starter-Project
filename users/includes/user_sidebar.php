@@ -1,3 +1,19 @@
+<?php
+if(isset($_SESSION['username'])){
+    $username = $_SESSION['username'];
+}
+
+$query = "SELECT * FROM comments WHERE comment_author  = '{$username}' ";
+$select_comments_count = mysqli_query($connection, $query);
+$count = mysqli_num_rows($select_comments_count);
+
+
+$query = "SELECT * FROM comments WHERE comment_author  = '{$username}' AND comment_status = 'unapproved' ";
+$select_ucomments_count = mysqli_query($connection, $query);
+$count2 = mysqli_num_rows($select_ucomments_count);
+?>
+
+
 <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
         <li> <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a> </li>
@@ -9,7 +25,7 @@
             </ul>
         </li>
         <li> <a href="./add_post.php"><i class="fa fa-fw fa-comments"></i>Add Posts</a> </li>
-        <li> <a href="view_comments.php"><i class="fa fa-fw fa-comments"></i>View Comments  <small class='pull-right'><span class='badge'> 1/2</span></small></a></li>
+        <li> <a href="view_comments.php"><i class="fa fa-fw fa-comments"></i>View Comments  <small class='pull-right'><span class='badge'> <?php echo $count2."/".$count; ?></span></small></a></li>
         <li> <a href="./user_settings.php"><i class="fa fa-fw fa-gear"></i>Settings</a> </li>
     </ul>
 </div>
