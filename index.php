@@ -42,6 +42,7 @@
                 $post_title = $row['post_title'];
                 $post_author = $row['post_author'];
                 $post_date = $row['post_date'];
+                $post_tags = $row['post_tags'];
                 $post_image = $row['post_image'];
                 $post_content = substr($row['post_content'],0,100);
                 $post_status = $row['post_status'];
@@ -53,8 +54,19 @@
                     </h2>
                     <p class="lead"> by
                         <a href="author_post.php?author=<?php echo $post_author; ?>">
-                            <?php echo $post_author; ?>
-                        </a>
+                            <?php echo $post_author; ?>  </a> <span>
+                            <?php //select interest based on comma and generet random classs
+                                    $tags = $post_tags;
+                                    $tags = explode(',',$tags);
+                                    foreach ($tags as $tag) {
+                                        $classes = array('primary','default','success','info','warning','danger','default','success','info','warning','danger','primary','default','success');
+                                        $class = array_rand($classes);
+                                        echo "<span class='label label-$classes[$class]'>$tag</span>";
+                                    }
+                            ?>
+
+                            </span>
+                       
                     </p>
                     <p><span class="glyphicon glyphicon-time"></span> Posted on
                         <?php echo $post_date; ?>

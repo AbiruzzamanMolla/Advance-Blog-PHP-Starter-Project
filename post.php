@@ -28,6 +28,7 @@
                 $post_author = $row['post_author'];
                 $post_date = $row['post_date'];
                 $post_image = $row['post_image'];
+                $post_tags  = $row['post_tags'];
                 $post_content = $row['post_content'];
             ?>
                             <!-- First Blog Post -->
@@ -41,8 +42,20 @@
                                 </a>
                             </p>
                             <p><span class="glyphicon glyphicon-time"></span> Posted on
-                                <?php echo $post_date; ?>
+                                <?php echo $post_date; ?> 
                             </p>
+                            <p> <span>
+                            <?php //select interest based on comma and generet random classs
+                                    $tags = $post_tags;
+                                    $tags = explode(',',$tags);
+                                    foreach ($tags as $tag) {
+                                        $classes = array('primary','default','success','info','warning','danger');
+                                        $class = array_rand($classes);
+                                        echo "<span class='label label-$classes[$class]'>$tag</span>";
+                                    }
+                            ?>
+
+                            </span> </p>
                             <hr> <img class="img-responsive" src="images/post_pic/<?php echo $post_image; ?>" alt="">
                             <hr>
                             <p>
@@ -63,28 +76,45 @@
 
                         date_default_timezone_set("Asia/Dhaka");
                         $comment_date = date('D, F d, Y - h:i:s A');
-                        if(!empty($comment_author) && !empty($comment_email) && !empty($comment_content)){
-                        $query = "INSERT INTO comments (author_type, comment_post_id, comment_author, comment_email, comment_content, comment_status, comment_date) ";
-                        $query .= "VALUES('{$author_type}', $comment_post_id, '{$comment_author}', '{$comment_email}', '{$comment_content}', 'unapproved', '{$comment_date}')";
-                        $comment_create_query = mysqli_query($connection, $query);
-                        if(!$comment_create_query){
-                            die('Faild' . mysqli_error($connection));
-                        } else {
-                            $message = "Comment added, waiting for admin aproval.";
-                        }
+
+                        if(!empty($comment_author) && !empty($comment_email) && !empty($comment_content) && $author_type == 'guest'){
+                            $query = "INSERT INTO comments (author_type, comment_post_id, comment_author, comment_email, comment_content, comment_status, comment_date) ";
+                            $query .= "VALUES('{$author_type}', $comment_post_id, '{$comment_author}', '{$comment_email}', '{$comment_content}', 'unapproved', '{$comment_date}')";
+                            $comment_create_query = mysqli_query($connection, $query);
+                                if(!$comment_create_query){
+                                    die('Faild' . mysqli_error($connection));
+                                } else {
+                                    $message = "waiting for admin aproval.";
+                                }
                         // Comment count updating query
                         $query = "UPDATE posts SET post_comment_count = post_comment_count+1 WHERE post_id = $comment_post_id ";
                         $update_comment_count = mysqli_query($connection, $query);
-                        }
-                        else {
+                        } elseif(!empty($comment_author) && !empty($comment_email) && !empty($comment_content) && $author_type == 'user'){
+                            $query = "INSERT INTO comments (author_type, comment_post_id, comment_author, comment_email, comment_content, comment_status, comment_date) ";
+                            $query .= "VALUES('{$author_type}', $comment_post_id, '{$comment_author}', '{$comment_email}', '{$comment_content}', 'approve', '{$comment_date}')";
+                            $comment_create_query = mysqli_query($connection, $query);
+                                if(!$comment_create_query){
+                                    die('Faild' . mysqli_error($connection));
+                                } else {
+                                    $message = "Thanks.";
+                                }
+                        // Comment count updating query
+                        $query = "UPDATE posts SET post_comment_count = post_comment_count+1 WHERE post_id = $comment_post_id ";
+                        $update_comment_count = mysqli_query($connection, $query); 
+
+                        } else {
+
                             echo "<script>alert('Fields can not be empty!')</script>";
                         }
+
+                    } else {
+                        $message = "";
                     }
                       ?>
                         <div class='well'>
                         <?php
                         if($message !== ''){
-                            echo "<div class='alert alert-success'><strong>Comment Added!</strong> Waiting for Admin approvel action. </div>";
+                            echo "<div class='alert alert-success'><strong>Comment Added!</strong>  ".$message."</div>";
                         }
                         ?>
                         
