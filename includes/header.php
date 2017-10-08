@@ -1,7 +1,6 @@
 <?php
 ob_start();
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +11,8 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" conten="Blog CMS">
     <meta name="author" content="Abiruzzaman Molla">
+    <meta name="keywords" content="HTML, CSS, XML, JavaScript">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CMS - Simple Blog by Abir</title>
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -20,12 +21,15 @@ session_start();
     <link href="css/blog-home.css" rel="stylesheet">
     <link href="admin/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="includes/favicon.png" rel="icon" type="image/png" />
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+    <style>
+    header{
+    padding: 1em;
+    color: white;
+    background-color: black;
+    clear: left;
+    text-align: center;
+    }
+</style>
 </head>
 
 <body>

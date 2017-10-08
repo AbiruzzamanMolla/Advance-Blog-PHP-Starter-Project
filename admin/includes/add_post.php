@@ -1,3 +1,4 @@
+
 <?php
 
 if(isset($_SESSION['username'])){
@@ -34,6 +35,8 @@ if(isset($_POST['create_post'])){
     echo "<div class='alert alert-success'><strong>Success!</strong> Post successfully added. <a href='../post.php?p_id={$p_id}'>View Post</a></div>";
 }
 ?>
+
+
     <h1 class="page-header">
         Add Post
         <small></small>

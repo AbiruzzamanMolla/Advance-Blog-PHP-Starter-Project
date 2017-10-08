@@ -1,4 +1,14 @@
 <?php include "includes/user_header.php"; ?>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
 <div id="wrapper">
     <!-- Navigation -->
     <?php include "includes/user_navigation.php"; ?>
@@ -129,7 +139,7 @@
                                          <b>:</b>   
                                         </td>
                                         <td class="text-left" width="80%">
-                                            <input type="text" value="<?php echo $user_firstname; ?>" class="form-control" name="user_firstname">
+                                            <input type="text" value="<?php echo $user_firstname; ?>" class="form-control" name="user_firstname" autofocus>
                                         </td>
                                     </tr>
                                     <tr>
@@ -173,7 +183,7 @@
                                          <b>:</b>   
                                         </td>
                                         <td class="text-left" width="80%">
-                                            <input type="text" value="<?php echo $user_birthday; ?>" class="form-control" name="user_birthday">
+                                            <input class="form-control" id="date" name="user_birthday" placeholder="<?php echo $user_birthday; ?>" value="<?php echo $user_birthday; ?>" type="date" min="1996-01-01" "1960-12-31">
                                         </td>
                                     </tr>
                                     <tr>
@@ -209,7 +219,7 @@
                                          <b>:</b>   
                                         </td>
                                         <td class="text-left" width="80%">
-                                            <input type="text" value="<?php echo $user_number; ?>" class="form-control" name="user_number">
+                                            <input type="tel" value="<?php echo $user_number; ?>" class="form-control" name="user_number">
                                         </td>
                                     </tr>
                                     <tr>
@@ -220,7 +230,7 @@
                                          <b>:</b>   
                                         </td>
                                         <td class="text-left" width="80%">
-                                            <input type="email" value="<?php echo $user_email; ?>" class="form-control" name="user_email">
+                                            <input type="email" value="<?php echo $user_email; ?>" class="form-control" name="user_email" autocomplete="on">
                                         </td>
                                     </tr>
                                      <tr>
@@ -297,7 +307,7 @@
                                          <b>:</b>   
                                         </td>
                                         <td class="text-left" width="80%">
-                                        <input type="text" value="<?php echo $user_site; ?>" class="form-control" name="user_site">
+                                        <input type="url" value="http://<?php echo $user_site; ?>" class="form-control" name="user_site">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -325,7 +335,7 @@
                                 </tbody>
                             </table>
                     <div class="form-group">
-                            <input class="btn btn-primary" type="submit" name="edit_profile" value="Update User"> </div>
+                            <input class="btn btn-primary" type="submit" name="edit_profile" value="Update User"> <input type="submit" formaction="demo_admin.php" value="Submit as admin"> </div>
 </form>
 
 <?php }
