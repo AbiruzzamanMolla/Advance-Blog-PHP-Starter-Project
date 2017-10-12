@@ -7,6 +7,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <?php
+
+                
                 $query = "SELECT * FROM categories ORDER BY cat_id DESC LIMIT 5";
                 $select_all_categories_query = mysqli_query($connection,$query);
                     while($row = mysqli_fetch_assoc($select_all_categories_query)){
@@ -39,6 +41,10 @@
 
                         echo "<li class='$cat_class'><a href='category.php?category={$cat_id}'>{$cat_title}</a></li>";
                     }
+                    $login_class = '';
+                    $cat_class = '';
+                    $reg_class = '';
+                    $contact_class = '';
                 ?>
                     <?php
                 if(isset($_SESSION['user_role'])){
