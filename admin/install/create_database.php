@@ -1,3 +1,5 @@
+<?
+
 $sql = "--\n"
 
     . "-- Database: `id231601_cms`\n"
@@ -27,3 +29,5 @@ $sql = "--\n"
     . "  `cat_image` varchar(255) NOT NULL DEFAULT \'no_category.png\'\n"
 
     . ") ENGINE=InnoDB DEFAULT CHARSET=latin1";
+    
+    ?>
