@@ -19,21 +19,21 @@
                     <h1 class="page-header">
                         View Comments
                         <small></small>
-                    </h1>
-                    <?php
-                    if(isset($_GET['source'])){
-                        $source = $_GET['source'];
-                    } else {$source = '';}
-                    switch($source){
-                        case 'edit_comment';
-                            include "includes/edit_comment.php";
-                            break;
+</h1>
+<?php
+if(isset($_GET['source'])){
+    $source = $_GET['source'];
+} else {$source = '';}
+switch($source){
+    case 'edit_comment';
+        include "includes/edit_comment.php";
+        break;
 
-                        default:
-                            include "includes/view_all_comments.php";
-                            break;
-                    }
-                    ?>
+    default:
+        include "includes/view_all_comments.php";
+        break;
+}
+?>
 
                 </div>
 
